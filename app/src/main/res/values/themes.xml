@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.AvitoTestApp" parent="Base.Theme.AvitoTestApp" />
+
+    <style name="item_style_text">
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
 </resources>

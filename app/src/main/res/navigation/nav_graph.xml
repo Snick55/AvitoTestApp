@@ -16,13 +16,21 @@
             <argument
                 android:name="movieId"
                 app:argType="integer" />
+            <argument
+                android:name="movieName"
+                app:argType="string"
+                />
 
         </action>
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
         android:name="com.snick55.avitotestapp.presentation.FragmentDetails"
-        android:label="FragmentDetails" >
+        android:label="{movieName}" >
+        <argument
+            android:name="movieName"
+            app:argType="string"
+            />
         <argument
             android:name="movieId"
             app:argType="integer" />

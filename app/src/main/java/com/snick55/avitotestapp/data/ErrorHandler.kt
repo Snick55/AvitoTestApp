@@ -2,6 +2,7 @@ package com.snick55.avitotestapp.data
 
 
 import com.snick55.avitotestapp.core.AppException
+import com.snick55.avitotestapp.core.EmptyResponseException
 import com.snick55.avitotestapp.core.GenericException
 import com.snick55.avitotestapp.core.NoInternetException
 import com.snick55.avitotestapp.core.ServerUnavailableException
@@ -19,11 +20,11 @@ interface ErrorHandler{
 
     class BaseErrorHandler @Inject constructor(): ErrorHandler {
         override fun handle(e: Exception): AppException {
-            log("error is $e")
             return when(e){
                 is UnknownHostException -> NoInternetException()
                 is HttpException -> ServerUnavailableException()
                 is SocketTimeoutException -> TimeOutException()
+                is EmptyResponseException -> EmptyResponseException()
                 else -> GenericException()
             }
         }

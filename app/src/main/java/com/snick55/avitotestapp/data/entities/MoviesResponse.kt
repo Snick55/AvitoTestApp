@@ -16,7 +16,7 @@ data class Doc(
     val description: String,
     val id: Int,
     val name: String,
-    val poster: Poster,
+    val poster: Poster?,
     val rating: Rating,
     val shortDescription: String?,
     val year: Int

@@ -8,7 +8,7 @@ data class MovieCloud(
     val budget: Budget,
     val countries: List<Country>,
     val deletedAt: Any,
-    val description: String,
+    val description: String?,
     val distributors: Distributors,
     val enName: Any,
     val externalId: ExternalId,

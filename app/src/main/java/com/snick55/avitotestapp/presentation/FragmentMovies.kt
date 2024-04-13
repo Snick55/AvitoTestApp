@@ -40,7 +40,7 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
 
     private fun setupSearch() {
         binding.searchEditText.addTextChangedListener {
-
+            viewModel.setSearch(it.toString())
         }
     }
 
@@ -52,7 +52,7 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
 
     private fun setupMoviesList() {
         val adapter = MoviesAdapter(onItemClicked = {
-            val direction = FragmentMoviesDirections.actionFragmentMoviesToFragmentDetails(it.id)
+            val direction = FragmentMoviesDirections.actionFragmentMoviesToFragmentDetails(it.id,it.name)
             findNavController().navigate(direction)
         })
         val footerAdapter = DefaultLoadStateAdapter(tryAgainAction = { adapter.retry() })
@@ -68,6 +68,7 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
         observeMovies(adapter)
         observeLoadState(adapter)
         handleListVisibility(adapter)
+
     }
 
     @OptIn(FlowPreview::class)
@@ -78,6 +79,8 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
             }
         }
     }
+
+
 
     private fun handleListVisibility(adapter: MoviesAdapter) {
         viewLifecycleOwner.lifecycleScope.launch {

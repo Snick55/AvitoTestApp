@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.snick55.avitotestapp.core.Container
+import com.snick55.avitotestapp.core.EmptyResponseException
 import com.snick55.avitotestapp.core.toMovie
 import com.snick55.avitotestapp.core.toMovieDetails
 import com.snick55.avitotestapp.data.entities.Doc
@@ -51,6 +52,34 @@ class MoviesRepositoryImpl @Inject constructor(
        } catch (e: Exception){
            Container.Error(errorHandler.handle(e))
        }
+    }
+
+    override fun getSearchedPagedMovies(query: String): Flow<PagingData<Movie>> {
+        val loader = object : Loader<Doc> {
+            override suspend fun load(pageIndex: Int, pageSize: Int): List<Doc> {
+                return getSearchedMovies(pageIndex, pageSize,query)
+            }
+        }
+
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                initialLoadSize = PAGE_SIZE
+            ),
+            pagingSourceFactory = { MoviesPagingSource(loader, errorHandler) }
+        ).flow
+            .map {pagingData->
+                pagingData.map {movieDTO->
+                    movieDTO.toMovie()
+                }
+            }
+    }
+
+    private suspend fun getSearchedMovies(pageIndex: Int, pageSize: Int, query: String) = withContext(ioDispatcher){
+         val moviesResponse = moviesApi.getSearchedMovies(pageIndex, pageSize,query)
+        if (moviesResponse.docs.isEmpty()) throw EmptyResponseException()
+        return@withContext moviesResponse.docs
     }
 
     private suspend fun getMovies(pageIndex: Int, pageSize: Int): List<Doc> =

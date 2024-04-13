@@ -10,7 +10,7 @@ data class ReviewsCloud(
     data class Doc(
         val author: String,
         val authorId: Int,
-        val createdAt: String,
+        val createdAt: String?,
         val date: String,
         val id: Int,
         val movieId: Int,

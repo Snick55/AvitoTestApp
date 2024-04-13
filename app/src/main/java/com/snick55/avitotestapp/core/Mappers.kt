@@ -17,7 +17,7 @@ fun Doc.toMovie() = Movie(
     description = description,
     id = id,
     name = name,
-    poster = poster.url,
+    poster = poster?.url ?: "",
     rating = rating.imdb,
     shortDescription = shortDescription ?: "",
     year = year
@@ -25,11 +25,15 @@ fun Doc.toMovie() = Movie(
 
 
 fun MovieCloud.toMovieDetails() = MovieDetail(
-    name = name, rating = rating.imdb, description = description, actors = persons.map {
-        Actor(name = it.name?:"нет информации", description = it.description?:"нет информации", photo = it.photo)
-    }, posters = listOf(poster.previewUrl,backdrop.url)
+    name = name, rating = rating.imdb, description = description?:"нет информации", actors = persons.map {
+        Actor(
+            name = it.name ?: "нет информации",
+            description = it.description ?: "нет информации",
+            photo = it.photo
+        )
+    }, posters = listOf(poster.previewUrl, backdrop.url)
 )
 
 fun ReviewsCloud.Doc.toReview() = Review(
-    author =  author, createdAt =  createdAt, review =  review
+    author = author, createdAt = createdAt ?: "нет информации", review = review
 )

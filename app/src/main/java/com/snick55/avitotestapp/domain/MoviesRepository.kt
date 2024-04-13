@@ -9,5 +9,6 @@ interface MoviesRepository {
     fun getPagedMovies(): Flow<PagingData<Movie>>
 
     suspend fun getMovieById(id:Int): Container <MovieDetail>
+    fun getSearchedPagedMovies(query: String): Flow<PagingData<Movie>>
 
 }

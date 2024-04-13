@@ -1,15 +1,12 @@
 package com.snick55.avitotestapp.core
 
-import android.annotation.SuppressLint
-import java.text.SimpleDateFormat
-import java.util.Date
 import javax.inject.Inject
 
-interface DateFormater {
+interface DateFormatter {
 
     fun format(time: String): String
 
-    class DateFormaterImpl @Inject constructor() : DateFormater {
+    class DateFormatterImpl @Inject constructor() : DateFormatter {
 
         override fun format(time: String): String {
             return time.substring(0,10)

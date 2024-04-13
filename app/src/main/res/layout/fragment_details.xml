@@ -48,18 +48,35 @@
 
 
             <TextView
-                android:id="@+id/ratingTV"
+                android:id="@+id/nameTV"
                 style="@style/item_style_text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:gravity="center"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/ratingTV"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/images"
                 tools:text="Рейтинг:100" />
 
             <TextView
+                android:id="@+id/ratingTV"
+                style="@style/item_style_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/nameTV"
+                app:layout_constraintTop_toBottomOf="@id/images"
+                tools:text="Рейтинг:100" />
+
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:id="@+id/descriptionTV"
                 style="@style/item_style_text"
                 android:layout_width="match_parent"
@@ -67,7 +84,7 @@
                 android:layout_marginHorizontal="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ratingTV"
+                app:layout_constraintTop_toBottomOf="@id/nameTV"
                 tools:text="ushdnhfkjsnvkjsnvkjnsdkl\njvndkjlf\nvnj\nkldnfvkjdnfvkjnfkjnlkjnfdvkjnvkjdnvkdnfkljndkljnvlkdnvkdnvndvndfnjdjfnvkjdnvkndklfncfnxjndkjn" />
 
             <TextView
@@ -104,6 +121,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/actorsRV" />
 
+            <include
+                android:id="@+id/loadStateView"
+                layout="@layout/part_default_load_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/reviewsTV" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviewsRV"
                 android:layout_width="match_parent"
@@ -114,13 +143,12 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/reviewsTV" />
+                app:layout_constraintTop_toBottomOf="@id/reviewsTV"
+                tools:visibility="invisible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.snick55.avitotestapp.core.ResultView>
-
-
 
 
 </ScrollView>

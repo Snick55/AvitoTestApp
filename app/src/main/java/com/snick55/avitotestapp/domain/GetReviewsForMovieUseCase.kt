@@ -2,7 +2,7 @@ package com.snick55.avitotestapp.domain
 
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.snick55.avitotestapp.core.DateFormater
+import com.snick55.avitotestapp.core.DateFormatter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -13,12 +13,14 @@ interface GetReviewsForMovieUseCase {
 
 
     class GetReviewsForMovieUseCaseImpl @Inject constructor
-        (private val reviewsRepository: ReviewsRepository, private val dateFormater: DateFormater) :
+        (private val reviewsRepository: ReviewsRepository, private val dateFormatter: DateFormatter) :
         GetReviewsForMovieUseCase {
         override fun execute(id: Int): Flow<PagingData<Review>> {
             return reviewsRepository.getPagedReviewsForMovie(id).map {
                 it.map {review->
-                    review.copy(createdAt = dateFormater.format(review.createdAt))
+                    if (review.createdAt == "нет информации") review
+                    else
+                    review.copy(createdAt = dateFormatter.format(review.createdAt))
                 }
             }
         }

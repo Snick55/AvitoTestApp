@@ -17,6 +17,13 @@ interface MoviesApi {
         @Query("limit") limit: Int,
     ): MoviesResponse
 
+    @GET("v1.4/movie/search")
+    suspend fun getSearchedMovies(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int,
+        @Query("query") query: String
+    ): MoviesResponse
+
     @GET("v1.4/movie/{id}")
     suspend fun getMovieById(
         @Path("id") movieId: Int

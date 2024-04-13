@@ -25,7 +25,7 @@ class MoviesAdapter(
                 root.tag = movie
                 nameTV.text = movie.name
                 yearTV.text = binding.root.context.getString(R.string.year_title,movie.year.toString())
-                countryTV.text = binding.root.context.getString(R.string.country_title,if(movie.countries.isNotEmpty()) movie.countries[0]else "нет информации")
+                countryTV.text = binding.root.context.getString(R.string.country_title,movie.countries)
                 ageRatingTV.text = binding.root.context.getString(R.string.age_rating_title,movie.ageRating.toString())
                 descriptionTV.text = movie.shortDescription
                 Glide.with(binding.root.context).load(movie.poster).into(poster)

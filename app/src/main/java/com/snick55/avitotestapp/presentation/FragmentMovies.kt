@@ -2,6 +2,8 @@ package com.snick55.avitotestapp.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -16,6 +18,8 @@ import com.snick55.avitotestapp.R
 import com.snick55.avitotestapp.core.simpleScan
 import com.snick55.avitotestapp.core.viewBinding
 import com.snick55.avitotestapp.databinding.FragmentMoviesBinding
+import com.snick55.avitotestapp.domain.Filter
+import com.snick55.avitotestapp.domain.FilterType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
@@ -32,14 +36,29 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
     private lateinit var mainLoadStateHolder: DefaultLoadStateAdapter.Holder
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setUpSpinner()
         setupMoviesList()
         setupSearch()
         setupSwipeToRefresh()
     }
 
+    private fun setUpSpinner() {
+        val items = this.getSpinnerItems()
+        val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,items)
+        binding.spinner.adapter = adapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>, view: View?, pos: Int, id: Long) {
+                val filter = adapterView.adapter.getItem(pos) as Filter
+                viewModel.setFilter(filter)
+            }
+
+            override fun onNothingSelected(adapterView: AdapterView<*>) {}
+        }
+    }
+
     private fun setupSearch() {
         binding.searchEditText.addTextChangedListener {
+            binding.spinner.setSelection(0)
             viewModel.setSearch(it.toString())
         }
     }
@@ -111,3 +130,12 @@ class FragmentMovies : Fragment(R.layout.fragment_movies) {
     }
 }
 
+fun FragmentMovies.getSpinnerItems(): List<Filter> = listOf(
+    Filter("нет фильтров", FilterType.EMPTY,""),
+    Filter("0-16 лет", FilterType.AGE,"0-7"),
+    Filter("18+ лет", FilterType.AGE,"18"),
+    Filter("<2000 года", FilterType.YEAR,"1874-2000"),
+    Filter(">2000 года", FilterType.YEAR,"2001-2024"),
+    Filter("Россия", FilterType.COUNTRY,"Россия"),
+    Filter("Франция", FilterType.COUNTRY,"Франция"),
+)

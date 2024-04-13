@@ -1,6 +1,7 @@
 package com.snick55.avitotestapp.di
 
 import com.snick55.avitotestapp.core.DateFormatter
+import com.snick55.avitotestapp.domain.GetFilteredMoviesUseCase
 import com.snick55.avitotestapp.domain.GetReviewsForMovieUseCase
 import dagger.Binds
 import dagger.Module
@@ -16,5 +17,8 @@ abstract class DomainModule {
 
     @Binds
     abstract fun bindDateFormatter(formatter: DateFormatter.DateFormatterImpl): DateFormatter
+
+    @Binds
+    abstract fun bindGetFilteredMoviesUseCase(useCase: GetFilteredMoviesUseCase.GetFilteredMoviesUseCaseImpl): GetFilteredMoviesUseCase
 
 }

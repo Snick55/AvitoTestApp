@@ -46,6 +46,44 @@ class MoviesRepositoryImpl @Inject constructor(
                 }
             }
     }
+
+    override fun getFilteredPagedMovies(
+        year: String?,
+        ageRating: String?,
+        countryName: String?
+    ): Flow<PagingData<Movie>> {
+        val loader = object : Loader<Doc> {
+            override suspend fun load(pageIndex: Int, pageSize: Int): List<Doc> {
+                return getFilteredMovies(pageIndex, pageSize,year,ageRating,countryName)
+            }
+        }
+
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                initialLoadSize = PAGE_SIZE
+            ),
+            pagingSourceFactory = { MoviesPagingSource(loader, errorHandler) }
+        ).flow
+            .map {pagingData->
+                pagingData.map {movieDTO->
+                    movieDTO.toMovie()
+                }
+            }
+    }
+
+    private suspend fun getFilteredMovies(
+        pageIndex: Int,
+        pageSize: Int,
+        year: String?,
+        ageRating: String?,
+        countryName: String?
+    ): List<Doc> = withContext(ioDispatcher) {
+        val moviesResponse = moviesApi.getFilteredMovies(pageIndex, pageSize,year, ageRating, countryName)
+        return@withContext moviesResponse.docs
+    }
+
     override suspend fun getMovieById(id: Int): Container<MovieDetail> {
        return try {
            Container.Success(moviesApi.getMovieById(id).toMovieDetails())

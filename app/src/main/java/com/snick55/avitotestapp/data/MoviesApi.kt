@@ -36,4 +36,13 @@ interface MoviesApi {
         @Query("movieId") movieId: Int
     ): ReviewsCloud
 
+    @GET("v1.4/movie")
+    suspend fun getFilteredMovies(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int,
+        @Query("year") year: String? = null,
+        @Query("ageRating") ageRating: String? = null,
+        @Query("countries.name") countryName: String? = null,
+    ):MoviesResponse
+
 }

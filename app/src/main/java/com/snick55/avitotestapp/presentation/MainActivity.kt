@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.snick55.avitotestapp.R
 import com.snick55.avitotestapp.core.log
 import com.snick55.avitotestapp.databinding.ActivityMainBinding
+import com.snick55.avitotestapp.presentation.movies.FragmentMovies
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 

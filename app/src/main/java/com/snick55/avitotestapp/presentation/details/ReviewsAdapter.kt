@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.snick55.avitotestapp.databinding.ItemReviewBinding
-import com.snick55.avitotestapp.domain.Review
+import com.snick55.avitotestapp.domain.entities.Review
 
 class ReviewsAdapter(
 ) : PagingDataAdapter<Review, ReviewsAdapter.Holder>(ReviewsDiffCallback()){

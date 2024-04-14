@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.movies
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,10 +6,10 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.snick55.avitotestapp.domain.Filter
-import com.snick55.avitotestapp.domain.FilterType
+import com.snick55.avitotestapp.domain.entities.Filter
+import com.snick55.avitotestapp.domain.entities.FilterType
 import com.snick55.avitotestapp.domain.GetFilteredMoviesUseCase
-import com.snick55.avitotestapp.domain.Movie
+import com.snick55.avitotestapp.domain.entities.Movie
 import com.snick55.avitotestapp.domain.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -37,7 +37,7 @@ class MoviesViewModel @Inject constructor(
         MutableStateFlow(PagingData.empty())
     val movies: StateFlow<PagingData<Movie>> = innerMovies.asStateFlow()
 
-    private val filterMutableLiveData = MutableLiveData(Filter("",FilterType.EMPTY,""))
+    private val filterMutableLiveData = MutableLiveData(Filter("", FilterType.EMPTY,""))
 
     private val search = MutableLiveData("")
 

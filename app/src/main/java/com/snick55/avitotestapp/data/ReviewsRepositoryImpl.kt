@@ -7,7 +7,7 @@ import androidx.paging.map
 import com.snick55.avitotestapp.core.toReview
 import com.snick55.avitotestapp.data.entities.ReviewsCloud
 import com.snick55.avitotestapp.di.IoDispatcher
-import com.snick55.avitotestapp.domain.Review
+import com.snick55.avitotestapp.domain.entities.Review
 import com.snick55.avitotestapp.domain.ReviewsRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay

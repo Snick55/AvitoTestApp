@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,9 +9,9 @@ import androidx.paging.cachedIn
 import com.snick55.avitotestapp.core.Container
 import com.snick55.avitotestapp.di.IoDispatcher
 import com.snick55.avitotestapp.domain.GetReviewsForMovieUseCase
-import com.snick55.avitotestapp.domain.MovieDetail
+import com.snick55.avitotestapp.domain.entities.MovieDetail
 import com.snick55.avitotestapp.domain.MoviesRepository
-import com.snick55.avitotestapp.domain.Review
+import com.snick55.avitotestapp.domain.entities.Review
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay

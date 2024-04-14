@@ -8,4 +8,6 @@
     <string name="age_rating_title">возратсное ограничение: %1$s</string>
     <string name="rating_title">Рейтинг: %1$s</string>
     <string name="name_title">Название: %1$s</string>
+    <string name="actors_title">Актеры</string>
+    <string name="reviews_title">Отзывы</string>
 </resources>

@@ -1,4 +1,6 @@
-package com.snick55.avitotestapp.domain
+package com.snick55.avitotestapp.domain.entities
+
+import com.snick55.avitotestapp.domain.entities.Actor
 
 data class MovieDetail(
     val name: String,

@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.domain
+package com.snick55.avitotestapp.domain.entities
 
 data class Filter(
     val title: String,

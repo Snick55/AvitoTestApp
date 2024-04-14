@@ -7,7 +7,6 @@ import com.snick55.avitotestapp.core.GenericException
 import com.snick55.avitotestapp.core.NoInternetException
 import com.snick55.avitotestapp.core.ServerUnavailableException
 import com.snick55.avitotestapp.core.TimeOutException
-import com.snick55.avitotestapp.core.log
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 

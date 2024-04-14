@@ -10,9 +10,9 @@ import com.snick55.avitotestapp.core.toMovie
 import com.snick55.avitotestapp.core.toMovieDetails
 import com.snick55.avitotestapp.data.entities.Doc
 import com.snick55.avitotestapp.di.IoDispatcher
-import com.snick55.avitotestapp.domain.Movie
-import com.snick55.avitotestapp.domain.MovieDetail
 import com.snick55.avitotestapp.domain.MoviesRepository
+import com.snick55.avitotestapp.domain.entities.Movie
+import com.snick55.avitotestapp.domain.entities.MovieDetail
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

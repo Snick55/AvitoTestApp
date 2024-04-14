@@ -2,6 +2,8 @@ package com.snick55.avitotestapp.domain
 
 import androidx.paging.PagingData
 import com.snick55.avitotestapp.core.Container
+import com.snick55.avitotestapp.domain.entities.Movie
+import com.snick55.avitotestapp.domain.entities.MovieDetail
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {

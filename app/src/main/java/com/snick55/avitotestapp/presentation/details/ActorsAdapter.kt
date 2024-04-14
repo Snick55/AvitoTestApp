@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.snick55.avitotestapp.R
 import com.snick55.avitotestapp.databinding.ItemActorBinding
-import com.snick55.avitotestapp.domain.Actor
+import com.snick55.avitotestapp.domain.entities.Actor
 
 class ActorsAdapter :
     ListAdapter<Actor, ActorsAdapter.ActorsViewHolder>(DetailUiDiffCallback()) {

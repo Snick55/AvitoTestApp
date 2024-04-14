@@ -3,10 +3,10 @@ package com.snick55.avitotestapp.core
 import com.snick55.avitotestapp.data.entities.Doc
 import com.snick55.avitotestapp.data.entities.MovieCloud
 import com.snick55.avitotestapp.data.entities.ReviewsCloud
-import com.snick55.avitotestapp.domain.Actor
-import com.snick55.avitotestapp.domain.Movie
-import com.snick55.avitotestapp.domain.MovieDetail
-import com.snick55.avitotestapp.domain.Review
+import com.snick55.avitotestapp.domain.entities.Actor
+import com.snick55.avitotestapp.domain.entities.Movie
+import com.snick55.avitotestapp.domain.entities.MovieDetail
+import com.snick55.avitotestapp.domain.entities.Review
 
 
 fun Doc.toMovie() = Movie(

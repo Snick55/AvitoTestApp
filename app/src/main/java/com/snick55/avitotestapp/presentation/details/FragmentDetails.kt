@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.details
 
 import android.os.Bundle
 import android.view.View
@@ -17,7 +17,8 @@ import com.snick55.avitotestapp.core.observe
 import com.snick55.avitotestapp.core.simpleScan
 import com.snick55.avitotestapp.core.viewBinding
 import com.snick55.avitotestapp.databinding.FragmentDetailsBinding
-import com.snick55.avitotestapp.domain.MovieDetail
+import com.snick55.avitotestapp.domain.entities.MovieDetail
+import com.snick55.avitotestapp.presentation.DefaultLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
@@ -75,7 +76,7 @@ class FragmentDetails: Fragment(R.layout.fragment_details) {
             ?.supportsChangeAnimations = false
         mainLoadStateHolder = DefaultLoadStateAdapter.Holder(
             binding.loadStateView,
-           null,
+            null,
             tryAgainAction = { adapter.retry() }
         )
         observeReviews(adapter)

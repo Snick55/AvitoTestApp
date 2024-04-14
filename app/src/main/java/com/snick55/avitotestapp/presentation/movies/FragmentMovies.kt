@@ -1,4 +1,4 @@
-package com.snick55.avitotestapp.presentation
+package com.snick55.avitotestapp.presentation.movies
 
 import android.os.Bundle
 import android.view.View
@@ -18,8 +18,9 @@ import com.snick55.avitotestapp.R
 import com.snick55.avitotestapp.core.simpleScan
 import com.snick55.avitotestapp.core.viewBinding
 import com.snick55.avitotestapp.databinding.FragmentMoviesBinding
-import com.snick55.avitotestapp.domain.Filter
-import com.snick55.avitotestapp.domain.FilterType
+import com.snick55.avitotestapp.domain.entities.Filter
+import com.snick55.avitotestapp.domain.entities.FilterType
+import com.snick55.avitotestapp.presentation.DefaultLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
